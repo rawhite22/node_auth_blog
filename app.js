@@ -24,7 +24,13 @@ mongoose
   .catch((err) => {
     console.log(err.message)
   })
+// view engine
+app.set('view engine', 'ejs')
 // routes
 app.get('/', (req, res) => {
-  res.json('working')
+  res.render('index', { title: 'Home' })
+})
+// 404
+app.use((req, res) => {
+  res.status(404).render('404/404', { title: '404 Error' })
 })
