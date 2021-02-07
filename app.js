@@ -2,6 +2,8 @@
 const express = require('express')
 const app = express()
 const PORT = 3000
+//const routes
+const blogRoutes = require('./routes/blogRoutes')
 // database
 const mongoose = require('mongoose')
 const dbURI = 'mongodb://127.0.0.1:27017/node-auth-blog'
@@ -24,12 +26,19 @@ mongoose
   .catch((err) => {
     console.log(err.message)
   })
-// view engine
+// view engine / middleware
 app.set('view engine', 'ejs')
+app.use(express.static('./public'))
+app.use(express.static('./js'))
+app.use(express.json())
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' })
 })
+
+// blog routes
+app.use('/blog', blogRoutes)
+
 // 404
 app.use((req, res) => {
   res.status(404).render('404/404', { title: '404 Error' })

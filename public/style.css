@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.index {
+  transition: all;
+  opacity: 0;
+}
+.testing {
+  opacity: 1;
+  transition: all 1s ease;
+}

@@ -1,14 +1,22 @@
-const router = ({ Router } = require('express'))
+const express = require('express')
+const router = express.Router()
+const {
+  blogHome_get,
+  blogCreate_get,
+  blogCreate_post,
+  singleBlog_get,
+  blog_delete,
+} = require('../controllers/blogController')
 
 // get blog page
-router.get('/', () => {})
+router.get('/', blogHome_get)
 // get create blog page
-router.get('/create', () => {})
+router.get('/create', blogCreate_get)
 // post blog
-router.post('/', () => {})
+router.post('/', blogCreate_post)
 // get details of individual blog
-router.get('/:id', () => {})
+router.get('/:id', singleBlog_get)
 // delete selected blog
-router.delete('/:id', () => {})
+router.delete('/:id', blog_delete)
 
 module.exports = router
