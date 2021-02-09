@@ -4,6 +4,7 @@ const app = express()
 const PORT = 3000
 //const routes
 const blogRoutes = require('./routes/blogRoutes')
+const authRoutes = require('./routes/authRoutes')
 // database
 const mongoose = require('mongoose')
 const dbURI = 'mongodb://127.0.0.1:27017/node-auth-blog'
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
 
 // blog routes
 app.use('/blog', blogRoutes)
+app.use('/auth', authRoutes)
 
 // 404
 app.use((req, res) => {
