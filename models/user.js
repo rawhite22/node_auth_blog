@@ -20,16 +20,19 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email })
   if (user) {
-    return user
+    const authenticated = await bcrypt.compare(password, user.password)
+    if (authenticated) {
+      return user
+    }
+    throw Error('incorrect password')
   } else {
     throw Error('incorrect email')
   }
 }
 
 userSchema.pre('save', async function (next) {
-  // const salt = await bcrypt.genSalt()
-  // this.password = await bcrypt.hash(this.password, salt)
-  console.log('pre-save')
+  const salt = await bcrypt.genSalt()
+  this.password = await bcrypt.hash(this.password, salt)
   next()
 })
 
