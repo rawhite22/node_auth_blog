@@ -7,6 +7,8 @@ const blogRoutes = require('./routes/blogRoutes')
 const authRoutes = require('./routes/authRoutes')
 // database
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const { checkUser } = require('./middleware/auth')
 const dbURI = 'mongodb://127.0.0.1:27017/node-auth-blog'
 // connect db
 mongoose
@@ -29,14 +31,16 @@ mongoose
   })
 // view engine / middleware
 app.set('view engine', 'ejs')
+app.use(cookieParser())
 app.use(express.static('./public'))
 app.use(express.static('./js'))
 app.use(express.json())
+// check for user
+app.get('*', checkUser)
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' })
 })
-
 // blog routes
 app.use('/blog', blogRoutes)
 app.use('/auth', authRoutes)

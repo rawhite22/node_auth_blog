@@ -1,0 +1,15 @@
+<nav>
+  <div class="logo">
+    <a href="/"><h1>HB</h1></a>
+  </div>
+  <div class="title">The Hudson Boys</div>
+  <div class="menu">
+    <% if (user) { %>
+    <a href="#">Welcome,<%=user.email%></a>
+    <a href="/auth/logout">logout</a>
+    <% } else { %>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/signup">sign up</a>
+    <% } %>
+  </div>
+</nav>

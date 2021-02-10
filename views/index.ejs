@@ -2,9 +2,13 @@
 <html lang="en">
   <%- include('./partials/head.ejs') %>
   <body>
-    <p class="index">index</p>
-    <a href="/blog">Blogs Home</a>
-    <a href="/blog/create">Create a blog</a>
+    <%- include('./partials/nav.ejs') %>
+    <a href="/blog">Blogs</a>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"
+      integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ=="
+      crossorigin="anonymous"
+    ></script>
     <script src="/anim.js"></script>
   </body>
 </html>

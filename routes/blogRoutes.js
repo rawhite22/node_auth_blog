@@ -7,11 +7,12 @@ const {
   singleBlog_get,
   blog_delete,
 } = require('../controllers/blogController')
+const { requireAuth } = require('../middleware/auth')
 
 // get blog page
 router.get('/', blogHome_get)
 // get create blog page
-router.get('/create', blogCreate_get)
+router.get('/create', requireAuth, blogCreate_get)
 // post blog
 router.post('/', blogCreate_post)
 // get details of individual blog

@@ -2,8 +2,13 @@
 <html lang="en">
   <%- include('../partials/head.ejs') %>
   <body>
-    <p>Found Blog</p>
-    <a href="/">Home</a>
+    <%- include('../partials/nav.ejs') %>
+    <div class="details content">
+      <h2><%= blog.title %></h2>
+      <div class="content">
+        <p><%= blog.body %></p>
+      </div>
+    </div>
     <script src="/test.js"></script>
   </body>
 </html>
